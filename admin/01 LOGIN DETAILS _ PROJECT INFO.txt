@@ -1,0 +1,13 @@
+Database Name: hotelms
+
+Developed by: GIT Programmers
+
+Recommended PHP Version 5.6.3 and 7.4.12
+
+
+Login Details
+
+username: Admin
+password: 12345
+
+
