@@ -128,16 +128,38 @@ if (isset($_GET['room_id'])) {
                                     <h4 style="font-weight: bold">Price: <span id="price">0</span> /-</h4>
                                     <h4 style="font-weight: bold">Total Amount : <span id="total_price">0</span> /-</h4>
                                     <h4 style="font-weight: bold">Mode Of Payment </h4>
-                                    <select id="payment_mode" name="payment_mode">
+                                    <div class="form-group">
+                                        <label for="payment_mode" class="form-label">Payment Mode</label>
+                                        <select id="payment_mode" name="payment_mode" class="form-control">
+                                            <option value="cash">Cash</option>
+                                            <option value="credit_card">Credit Card</option>
+                                            <option value="gcash">Gcash</option>
+                                        </select>
+                                    </div>
 
-                                        <option value="credit_card">Cash</option>
+                                    <!-- Gcash Form - Initially Hidden -->
+                                    <div id="gcash-form" class="form-group" style="display: none;">
+                                        <label for="gcash_number" class="form-label">Gcash Number</label>
+                                        <input type="text" id="gcash_number" name="gcash_number" class="form-control" placeholder="Enter your Gcash number">
 
-                                        <option value="debit_card">Credit Card</option>
-                                        <option value="paypal">Gcash</option>
-                                        </option>
+                                        <label for="gcash_name" class="form-label">Account Name</label>
+                                        <input type="text" id="gcash_name" name="gcash_name" class="form-control" placeholder="Enter account name">
 
-                                        <option value="paypal">Paymaya</option>
-                                    </select>
+                                        <label for="gcash_code" class="form-label">Gcash OTP</label>
+                                        <input type="text" id="gcash_code" name="gcash_code" class="form-control" placeholder="Enter gcash otp code">
+                                    </div>
+
+                                    <script>
+                                        // JavaScript to Show/Hide the Gcash Form Based on Selection
+                                        document.getElementById('payment_mode').addEventListener('change', function() {
+                                            const gcashForm = document.getElementById('gcash-form');
+                                            if (this.value === 'gcash') {
+                                                gcashForm.style.display = 'block';
+                                            } else {
+                                                gcashForm.style.display = 'none';
+                                            }
+                                        });
+                                    </script>
 
                                 </div>
                             </div>

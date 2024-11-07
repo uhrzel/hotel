@@ -146,13 +146,14 @@ if (isset($_POST['booking'])) {
     $id_card_id = $_POST['id_card_id'];
     $id_card_no = $_POST['id_card_no'];
     $address = $_POST['address'];
+    $payment_mode = $_POST['payment_mode'];
 
     $customer_sql = "INSERT INTO customer (customer_name,contact_no,email,id_card_type_id,id_card_no,address) VALUES ('$name','$contact_no','$email','$id_card_id','$id_card_no','$address')";
     $customer_result = mysqli_query($connection, $customer_sql);
 
     if ($customer_result) {
         $customer_id = mysqli_insert_id($connection);
-        $booking_sql = "INSERT INTO booking (customer_id,room_id,check_in,check_out,total_price,remaining_price) VALUES ('$customer_id','$room_id','$check_in','$check_out','$total_price','$total_price')";
+        $booking_sql = "INSERT INTO booking (customer_id,room_id,check_in,check_out,total_price,remaining_price, payment_mode) VALUES ('$customer_id','$room_id','$check_in','$check_out','$total_price','$total_price', '$payment_mode')";
         $booking_result = mysqli_query($connection, $booking_sql);
         if ($booking_result) {
             $room_stats_sql = "UPDATE room SET status = '1' WHERE room_id = '$room_id'";
