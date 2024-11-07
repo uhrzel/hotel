@@ -149,14 +149,39 @@ if (isset($_GET['room_id'])) {
                                         <input type="text" id="gcash_code" name="gcash_code" class="form-control" placeholder="Enter gcash otp code">
                                     </div>
 
+                                    <div id="credit-form" class="form-group" style="display: none;">
+                                        <label style="font-weight: bold; font-size: 20px;">Credit Card Details</label>
+                                        <div class=" form-group col-lg-10">
+                                            <label for="credit_number" class="form-label">Credit Card Number</label>
+                                            <input type="text" id="credit_number" name="credit_number" class="form-control" placeholder="54xxxxxxxx">
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="form-group col-lg-6">
+                                                <label for="expiry_date" class="form-label">Expiry Date</label>
+                                                <input type="date" id="expiry_date" name="expiry_date" class="form-control">
+                                            </div>
+                                            <div class="form-group col-lg-6">
+                                                <label for="cvv" class="form-label">CVV</label>
+                                                <input type="text" id="cvv" name="cvv" class="form-control" placeholder="1234">
+                                            </div>
+                                        </div>
+                                    </div>
+
+
                                     <script>
                                         // JavaScript to Show/Hide the Gcash Form Based on Selection
                                         document.getElementById('payment_mode').addEventListener('change', function() {
                                             const gcashForm = document.getElementById('gcash-form');
+                                            const creditForm = document.getElementById('credit-form');
                                             if (this.value === 'gcash') {
                                                 gcashForm.style.display = 'block';
                                             } else {
                                                 gcashForm.style.display = 'none';
+                                            }
+                                            if (this.value === 'credit_card') {
+                                                creditForm.style.display = 'block';
+                                            } else {
+                                                creditForm.style.display = 'none';
                                             }
                                         });
                                     </script>
